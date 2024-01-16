@@ -26,7 +26,7 @@ for (const username in userEquipmentMap) {
       const element = document.querySelector('.col-md-12 .q-btn__content.text-center');
       return element && element.innerText === 'Release';
     }, { timeout: 1 * 60 * 1000 });
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < process.env.ITERATION; i++) {
       await equipmentOperation('pH MEAS', equipment, page).then(async () => {
         await validateHeaders(["pH", "Signal", "Temperature"], page);
         await request(`${simUI}/uicallback?p1=manualendpoint`);
