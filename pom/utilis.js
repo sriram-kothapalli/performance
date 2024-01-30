@@ -49,7 +49,7 @@ export const validateHeaders = async (expectedHeaders, page) => {
 
 export async function resultConfirmation(equipment, page) {
     await page.waitForFunction(() => {
-        const element = document.querySelector('.col-md-12 .q-btn__content.text-center');
+        const element = document.querySelector('[type="button"] .q-btn__content');
         return element && element.innerText === 'Confirm';
     }, { timeout: 1 * 60 * 1000 });
     await page.locator('[type="textarea"]').type(equipment);
