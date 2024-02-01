@@ -30,4 +30,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          npx playwright test loadTest --project=chromium --workers=50 
+          npx playwright test loadTest --project=chromium --workers=5 
