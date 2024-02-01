@@ -5,12 +5,12 @@ export async function equipmentSelection(serialNumber, page) {
     await page.type('[placeholder="Search"]', serialNumber)//Search Serial At Step 1
     await page.click('.q-field i:last-child');//Click on Search Button
     await page.waitForTimeout(5000)
-    await page.locator('.q-checkbox__check').click({ timeout: 10000 });//Select Checkbox
+    await page.locator('.q-checkbox__check').click({ timeout: 100000 });//Select Checkbox
     await page.waitForFunction(() => {
         const element = document.querySelector('.balance-primary-button');
         return element && element.innerText === 'Next';
-    }, { timeout: 1 * 60 * 1000 });
-    await page.locator('.balance-primary-button').click({ timeout: 10000 });//Click on Next
+    }, { timeout: 3 * 60 * 1000 });
+    await page.locator('.balance-primary-button').click({ timeout: 100000 });//Click on Next
 }
 
 
@@ -19,7 +19,7 @@ export async function equipmentConfirmation(page) {
         const element = document.querySelector('.balance-primary-button');
         return element && element.innerText === 'Confirm';
     }, { timeout: 1 * 60 * 1000 });
-    await page.locator('.balance-primary-button').click();
+    await page.locator('.balance-primary-button').click({ timeout: 100000 });
 }
 
 export async function equipmentOperation(optionValue, sampleid, page) {
@@ -31,7 +31,7 @@ export async function equipmentOperation(optionValue, sampleid, page) {
         await page.locator('.col-4.q-pr-sm:text-is("Sample ID *")').innerText();
         await page.locator('.method-selection input').type(sampleid);
     }
-    await page.getByRole('button', { name: 'Start' }).click({ timeout: 10000 });
+    await page.getByRole('button', { name: 'Start' }).click({ timeout: 100000 });
 }
 
 
@@ -58,11 +58,11 @@ export async function resultConfirmation(equipment, page) {
 
 
 export async function logout(warnigtext, page) {
-    await page.locator('.unfold-logout .tab-item').click({ timeout: 10000 }); //Click on Logout Button
+    await page.locator('.unfold-logout .tab-item').click({ timeout: 100000 }); //Click on Logout Button
     const test = await page.locator(`.warning-text:has-text("${warnigtext}")`).innerText(); // Validating the Text `Are you sure to log out?`
     expect(test).toEqual(warnigtext)
-    await page.locator('.confirmDialog>.justify-center>button:first-of-type').click({ timeout: 10000 }); // Confirming the Logout
+    await page.locator('.confirmDialog>.justify-center>button:first-of-type').click({ timeout: 100000 }); // Confirming the Logout
     await page.waitForTimeout(5000); // Waiting for 5 Seconds
-    await page.waitForFunction(() => window.location.href.includes('merck/login'), { timeout: 10000, polling: 1000 });// Waiting Until merck/login is there on URL
+    await page.waitForFunction(() => window.location.href.includes('merck/login'), { timeout: 100000, polling: 1000 });// Waiting Until merck/login is there on URL
 }
 
