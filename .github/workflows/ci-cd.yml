@@ -7,9 +7,15 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # Use your self-hosted runner here
 
     steps:
+      - name: Connect to VPN
+        run: |
+          sudo openconnect -u BB_QA_SRIRAM --passwd-on-stdin 124.123.26.241:8443 << EOF
+          =<zK/>8Ms9ZKnPkW
+          EOF
+
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
@@ -30,4 +36,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          npx playwright test loadTest --project=chromium --workers=5 
+          npx playwright test loadTest --project=chromium --workers=5
+
+      - name: Disconnect from VPN
+        run: sudo pkill openconnect
