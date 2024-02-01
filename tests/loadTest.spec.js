@@ -131,7 +131,6 @@ for (const username in userEquipmentMap) {
           const perf = window.performance;
           return perf && perf.memory ? perf.memory.totalJSHeapSize / (1024 * 1024) : null;
         });
-
         const currentTimeIST = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
         const fileExists = fs.existsSync('performance_metrics.csv');
 
