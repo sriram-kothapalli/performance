@@ -11,10 +11,9 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Ensure you have the latest v2 version
         with:
           submodules: 'recursive'  # Include this line if you have submodules
-          ref: 'v2'  # Explicitly specifying the version to ensure compatibility
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
