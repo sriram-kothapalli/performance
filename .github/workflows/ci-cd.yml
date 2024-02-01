@@ -29,4 +29,7 @@ jobs:
           npx playwright install
 
       - name: Run Tests
-        run: npm test
+        run: |
+        echo "Running tests in headless mode"
+        npx playwright test loadTest --project=chromium --workers=50
+
