@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # Use your self-hosted runner here
+     runs-on: ubuntu-latest
 
     steps:
       - name: Connect to VPN
