@@ -10,10 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install OpenConnect
+        run: sudo apt-get update && sudo apt-get install -y openconnect
+
       - name: Connect to VPN
         run: |
           sudo openconnect -u BB_QA_SRIRAM --passwd-on-stdin 124.123.26.241:8443 << EOF
-          =<zK/>8Ms9ZKnPkW
+          ${{ secrets.VPN_PASSWORD }}
           EOF
         env:
           VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
@@ -24,7 +27,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Use Node.js 20
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
