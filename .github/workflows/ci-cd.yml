@@ -16,10 +16,8 @@ jobs:
       - name: Connect to VPN
         run: |
           sudo openconnect -u BB_QA_SRIRAM --passwd-on-stdin 124.123.26.241:8443 << EOF
-          ${{ secrets.VPN_PASSWORD }}
+          =<zK/>8Ms9ZKnPkW
           EOF
-        env:
-          VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
 
       - name: Checkout Repository
         uses: actions/checkout@v2
