@@ -30,6 +30,5 @@ jobs:
 
       - name: Run Tests
         run: |
-        echo "Running tests in headless mode"
         npx playwright test loadTest --project=chromium --workers=50
 

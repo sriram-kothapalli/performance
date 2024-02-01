@@ -11,7 +11,7 @@ export default defineConfig({
         contextOptions: { ignoreHTTPSErrors: true },
         viewport: { width: 1366, height: 700 },
         browserName: 'chromium',
-        launchOptions: { headless: false },
+        launchOptions: { headless: true },
         trace: 'off',
       },
     },
